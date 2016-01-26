@@ -37,7 +37,7 @@ For this reason, if you ask me a question about how to do something, I *expect* 
 - web app development process
   - conception ($$)
   - prototype
-  - feeedback
+  - feedback
   - updates
   - release
 
@@ -97,7 +97,7 @@ Browser compatibility is less of an issue than it was even two years ago, but st
 Start getting comfortable with the [Chrome Developer Tools](https://developer.chrome.com/devtools), too.
 
 ## A note about text editors
-I don't care what you use to write your code, as long as it's an editor specifically geared towards writing code(*not* Notepad, TextEdit, MS Word, etc). I like [Sublime Text 3](http://www.sublimetext.com/3), which is free (though they ask you to buy, there's no time limit on the free trial). If you're into Vim, that's fine. If you find a full-featured Ruby IDe that you like, that works too.
+I don't care what you use to write your code, as long as it's an editor specifically geared towards writing code(*not* Notepad, TextEdit, MS Word, etc). I like [Sublime Text 3](http://www.sublimetext.com/3), which is free (though they ask you to buy, there's no time limit on the free trial). If you're into Vim, that's fine. If you find a full-featured Ruby IDE that you like, that works too.
 
 ## A note about Git and Github
 Version control is a huge part of professional coding. Git is not the only version control system out there, but Github is fairly widely used, and it'll do you good to get familiar with using it. Most OSS (open-source software) is housed on Github.
