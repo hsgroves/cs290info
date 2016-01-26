@@ -4,7 +4,7 @@ This week is all about getting started & setting expectations for the course.
 ## My Expectations
 - This is a one-credit, entirely project-based course
 - I'll put in as much effort as you do - if you're learning and excited, I'll teach you whatever you want to learn; if you're not, you won't learn anything useful, but will have a super easy semester. Either is fine with me!
-- Attendence, participation, and other typical factors are *not* a factor in your final grade. **However**, you will probably fail if you do not attend and participate, since all of the materials & knowledge you need for the project will be explained during class time. So try to show up and pay attention :)
+- Participation and other typical factors are *not* a factor in your final grade. However, you **will** fail if you do not attend, since all of the materials & knowledge you need for the project will be explained during class time. Show up and pay attention :)
 
 ## Slack
 [Slack](http://www.slack.com) is a chat system used by lots of companies as an internal communication tool. It's great. All of our class communications should occur on the class slack channel, [http://cs290spring16.slack.com](http://cs290spring16.slack.com). Slack is available as a web-based app as well as a native OSX, Windows, Linux, iOS, Android, and Windows Phone app.
@@ -76,12 +76,12 @@ Rails is a library (or `gem`) in Ruby that provides a bunch of stuff related to 
 I chose Rails for this course because it minimizes the amount of low-level decisions that you need to make as a developer, has an abundance of documentation + support available for free online, and will give a fairly full overview of the entire web application development process.
 
 ## Ruby/Rails Install Options
-Use your own computer, not an AU computer. **Do not** use pre-built Rails installers. It's very likely that they won't work or won't set things up properly/with the right versions.
+Use your own computer, not an AU computer (unless you choose to develop using Cloud9). **Do not** use pre-built Rails installers. It's very likely that they won't work or won't set things up properly/with the right versions.
 
 ### Windows
 If you're using a Windows machine or an older Mac (pre-2012), I highly recommend using [Cloud9](https://c9.io/pricing/webide) to develop remotely (the free option is fine). You will need an internet connection at all times in order to develop.
 
-Alternately, you can configure [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or [Docker](https://www.docker.com) and install Ruby/Rails on a Linux-based virtual machine. VirtualBox is a bit simpler to set up than Docker; both can be very difficult to configure. To start, Cloud9 is a better choice.
+Alternately, you can configure [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or [Docker](https://www.docker.com) and install Ruby/Rails on a Linux-based virtual machine. VirtualBox is a bit simpler to set up than Docker; both can be very difficult to configure. To start, Cloud9 is probably a better choice.
 
 ### Mac
 I very highly suggest [this guide](http://railsapps.github.io/installrubyonrails-mac.html) to help you set up Homebrew, Ruby, RVM, Git, and Rails.Note that version numbers may be slightly out of date (though shouldn't be by much).
