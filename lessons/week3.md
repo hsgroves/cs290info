@@ -2,6 +2,12 @@
 
 * Note: this and all upcoming lessons will be demo'd using Cloud 9 with a Ruby workspace.
 
+##Tracking your project on Github
+Have your Github username and password handy.
+
+In order to view your files & commits on Github, you have to configure git to store your files on Github's server. [Github's own article](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) on how to do so is by far the best explanation of how to do this, and what we're following in class.
+
+
 ##Rails App Directory Structure
 
 ##Creating our first model
@@ -38,8 +44,3 @@ To migrate your app's database:
 
 ##Routes & Views
 To see the routes (`URL -> Ruby function` mappings) for your app, run: `bundle exec rake routes`.
-
-##Tracking your project on Github
-Have your Github username and password handy.
-
-In order to view your files & commits on Github, you have to configure git to store your files on Github's server. [Github's own article](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) on how to do so is by far the best explanation of how to do this, and what we're following in class.
