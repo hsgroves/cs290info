@@ -13,5 +13,6 @@ If you're new to Ruby, here are some starting questions/topics that may be helpf
 - Blocks/Procs/Lambdas
 - default access modifiers (public/protected/private) for instance methods and variables
 - exception handling: in particular, familiarize yourself with `rescue Exception` and why to not do it (or how to properly do it)
+- different types of hash syntax
 
 more to come...
