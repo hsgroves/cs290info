@@ -1,9 +1,9 @@
 ##[Ruby Topics](https://github.com/hsgroves/cs290info/blob/master/ruby_topics.md)
 
 ##Steps you should be taking for your own project
-You should definitely have connected your app to a Github repository. You should commit any work you do, and push those changes to Github.
+At this point, you should have connected your app to a Github repository and be committing any work you do, and pushing those commits to Github.
 
-At this point, you should be thinking of how you're going to split your app idea up into Rails models. Example: a to-do list app will almost certainly require a List model and a ListItem model, related with a `has_many`/`belongs_to` relationship. You might also want to put a user system in place; then a User and Lists would also have a `has_many`/`belongs_to` relationship.
+You should also be thinking of how you're going to split your app idea up into Rails models. Example: a to-do list app will almost certainly require a List model and a ListItem model, related with a `has_many`/`belongs_to` relationship. You might also want to put a user system in place; then a User and Lists would also have a `has_many`/`belongs_to` relationship.
 
 You should also actually be creating the models in your app. Please send me a Slack message by **next Tuesday, March 8** with a link to your project's Github account, so I can look over your migrations/models/relations/etc. Feel free to ask me/another student/the internet for help with any specifics!
 
