@@ -26,4 +26,10 @@ bundle exec rails generate scaffold Tag title:string
 
 `has_and_belongs_to_many` should be used when no extra information is expected to be stored about the relationship. `has_many, :through` is more robust and usually better to use, so we're going to start with that. Even if you can't immediately think of any extra information about the relationship that needs storing, it's much easier to add later with a `has_many, :through` relationship.
 
-More to come! 
+###Migration
+
+##Changes to Model files
+
+##Updating controllers & views
+
+##Updating ActiveAdmin
