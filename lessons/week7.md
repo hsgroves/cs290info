@@ -19,7 +19,7 @@ In `db/migrate/YYYYMMDDHHMMSS_create_tags.rb`, replace line 4 with the following
       t.index :title, unique: true
 ```
 
-Now, run `bundle exec rake db: migrate` to add our new `tags` table to the database.
+Now, run `bundle exec rake db:migrate` to add our new `tags` table to the database.
 
 ##Many-to-Many Relationships
 `Posts` won't be related to `Tags` in the same way that `Posts` are related to `Users`. A `Post` can only be associated with one `User`, but a `Post` could have many `Tags`. Likewise, we might want to know how many `Posts` are associated with a given `Tag` - so a `Tag` can't just be associated with one `Post`. We call this kind of relationship a "Many-to-Many" relationship. In Rails, there are two ways of doing this: with a `has_and_belongs_to_many` or a `has_many, :through`.
