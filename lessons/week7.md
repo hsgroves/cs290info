@@ -78,7 +78,7 @@ In `app/views/posts/_form.html.erb`, add the following after line 21:
 ```
 Now when we go to create a new post, we see an input for our tags. But when we submit the form, no information about the tags is saved - let's add that logic to our posts controller (`app/controllers/posts_controller.rb`) now.
 
-First, let's create a method to split up the string into an array of individual tags. Under the `private` keyword on line 64, add the following:
+First, let's create a method to split up the string into an array of individual tags. Under the `private` keyword on line 70, add the following:
 ```
     def get_tags(str, delim)
       titles = str.split(delim)
