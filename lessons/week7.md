@@ -127,7 +127,7 @@ In `app/views/posts/show.html.erb`, add the following after line __:
 <% if @post.tags %>
   <strong>Tags</strong>
   <ul>
-  <% post.tags.each do |tag| %>
+  <% @post.tags.each do |tag| %>
     <li><%= tag.title %></li>
   <% end %>
   </ul>
