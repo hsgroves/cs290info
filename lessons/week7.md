@@ -113,7 +113,7 @@ Now we need to make sure we populate the tags input on the `edit` form for an ex
 `update` is a little more complicated - if the `post` already has a certain `tag` associated with it, we don't want to add it again; on the other hand, if a tag is no longer in the list, we want to make sure we remove it. To keep things simple, we're going to clear out the `post`'s tags, and re-add the ones from the user's input. So after line __, add the following:
 ```
     tags = get_tags(post_params[:tag_titles], ',')
-    @post.tags.destroy
+    @post.tags.clear
     tags.each do |tag|
       @post.tags << tag
     end
