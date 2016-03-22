@@ -21,10 +21,14 @@ In your terminal:
 bundle exec rails generate scaffold Tag title:string
 ```
 
-##Connecting Posts and Tags: Many-to-Many Relationships
+##Many-to-Many Relationships
 `Posts` aren't related to `Tags` in the same way that `Posts` are related to `Users`. A `Post` can only be associated with one `User`, but a `Post` could have many `Tags`. Likewise, we might want to know how many `Posts` are associated with a given `Tag` - so a `Tag` can't just be associated with one `Post`. We call this kind of relationship a "Many-to-Many" relationship. In Rails, there are two ways of doing this: with a `has_and_belongs_to_many` or a `has_many, :through`.
 
-`has_and_belongs_to_many` should be used when no extra information is expected to be stored about the relationship. `has_many, :through` is more robust and usually better to use, so we're going to start with that. Even if you can't immediately think of any extra information about the relationship that needs storing, it's much easier to add later with a `has_many, :through` relationship.
+`has_and_belongs_to_many` should be used when no extra information is expected to be stored about the relationship. `has_many :through` is more robust - it allows you to work with the entity that joins the two models. If you need to store extra information about the relationship between two models (i.e. anything more than just the fact that they are related), you should use a `has_many :through`. If not, a `has_and_belongs_to_many` relationship will be simpler.
+
+##Connecting Posts and Tags: `has_and_belongs_to_many`
+
+
 
 ###Migration
 
