@@ -92,7 +92,7 @@ First, let's create a method to split up the string into an array of individual 
     end
 ```
 
-Next, we need to tell the `PostsController` to accept our virtual parameter called `tag_titles`. In the `post_params` method on line 82, add `:tag_titles` to the list of parameters passed to `.permit(`.
+Next, we need to tell the `PostsController` to accept our virtual parameter called `tag_titles`. In the `post_params` method on line 84, add `:tag_titles` to the list of parameters passed to `.permit(`.
 
 There are three methods that will need to deal with tags - `update`, `edit` and `create`. `create` is most straightforward, so we'll start with that.
 
