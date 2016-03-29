@@ -143,6 +143,28 @@ Anyways, a `div` will take up its own line on the page. I like to think of divs 
 
 A `span` is usually used to wrap a small section of text. I like to think of spans as a highlighter to style different types of texts (labels, etc).
 
+###Selecting by class and id
+Often times, you want to select elements for CSS based on something more descriptive than the type of element, or its parents. HTML provides two different attributes, `class`es and `id`s, that you can target using CSS.
+
+Consider this HTML:
+```
+<div id="title">This is the only title on the page, so I'm giving it an id attribute.</div>
+<p class="section">I'm going to have a lot of sections, so I'm giving them class attributes</p>
+<p class="section">Wow, look at all these sections</p>
+<p class="section">So many sections</p>
+```
+
+The following CSS can be used to target elements by `id` and `class`, respectively:
+```
+#title { // # selects elements with an id of 'title'
+  font-size: 36px;
+}
+.section { // . selects elements with a class of 'section'
+  font-size: 18px;
+  color: #C50D23; // red
+}
+```
+
 ##Chrome Developer Tools Demo - view ALL the source code
 Check out [this ecommerce page](http://www.maydesigns.com/shop/photobooks/build/all-layouts/#/).
 
