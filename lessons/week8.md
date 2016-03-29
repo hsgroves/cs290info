@@ -84,17 +84,64 @@ p {
 ```
 `p` is the HTML element we want to target. In CSS, we call it the "selector", because it's possible that more than one element is contained (see below). 
 
-`color` is the property of the selected elements that we want to alter 
+`color` is the property of the selected elements that we want to alter. Properties are predefined by the browser that you're viewing a page in. Some browsers support properties in different ways; some browsers don't support certain properties at all. This is why web developers hate IE, especially old versions. This is why "browser compatibility" is a thing.
+
+`#000` is the value that we're giving the `color` property. For something like color, the value is a hex code representing an RGB value. Different kinds of properties will have different kinds of values.
+
+##Selectors and inheritance
+Consider the following CSS:
+```
+p {
+  color: #FFF; // white
+}
+
+p {
+  color: #000;
+  background-color: #DAF98C; // a nice lime green
+}
+
+p span {
+  color: #C50D23; // red
+}
+
+p, span {
+  font-weight: bold;
+}
+```
+
+That will produce the following effects:
+```
+<p>
+  Black, bold text on a lime green background
+</p>
+
+<p>
+  <span>Red, bold text on a lime green background</span>
+</p>
+
+<span>Black, bold text on a white background</span>
+```
+
+Note how later, different rules like `font-weight` for the `p` element do not cancel out the `color` and `background-color` property, but setting a property that has already set (like setting `color` a second time) will override the first value.
+
+Also notice how a space between `p` and `span` denotes that following style rules should only apply to `span` elements that are contained within a `p`; a comma between `p` and `span` denotes that following style rules should apply to *both* `p` and `span` elements.
+
+Those last two are far from the only methods of selecting elements to target with your CSS rules; we call them 'CSS Selectors'. Going through all of the CSS selectors and how to use them would take up a long time. If you're interested in CSS, you should look through documentation on selectors on your own time. It gets pretty crazy (or pretty fun, depending on how you look at it!).
 
 ###Helpful Links
 
   * [MDN CSS Selectors Reference](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors)
+  * [MDN CSS Properties List](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
   * [ColourLovers for premade color palettes](http://www.colourlovers.com/palettes)
 
-###divs and spans
-`<div>` and `<span>` are two important HTML elements. The main difference between them is that divs are **block-level** and spans are **inline** elements. Block-level elements by default take up their own line on the page, and you can assign them a width and height. Inline elements do not break the text flow of the HTML page, and adjust their width and height to their content.
+###divs and spans, block and inline
+`<div>` and `<span>` are two important HTML elements. The main difference between them is that divs are **block-level** and spans are **inline** elements. Block-level elements by default take up their own line on the page, and you can assign them a width and height. Inline elements do not break the text flow of the HTML page, and adjust their width and height to their content. There's also something called `inline-block`, that combines the best of both worlds.
 
-(StackOverFlow is better than me at explaining this.)[http://stackoverflow.com/questions/8969381/what-is-the-difference-between-display-inline-and-display-inline-block]
+This is a very good first CSS thing for you to understand, and I highly recommend reading the following two pages on your own time. [StackOverFlow explains it visually.](http://stackoverflow.com/questions/8969381/what-is-the-difference-between-display-inline-and-display-inline-block) [This article explains it technically.](http://www.impressivewebs.com/difference-block-inline-css/)
+
+Anyways, a `div` will take up its own line on the page. I like to think of divs as invisible boxes that are used to organize the layout of a page. They're used to wrap large portions of text/elements, and great at controlling the flow of a document.
+
+A `span` is usually used to wrap a small section of text. I like to think of spans as a highlighter to style different types of texts (labels, etc).
 
 ##Chrome Developer Tools Demo - view ALL the source code
 Check out [this ecommerce page](http://www.maydesigns.com/shop/photobooks/build/all-layouts/#/).
@@ -105,6 +152,8 @@ Several options:
 3) Right click on any element on the page -> Inspect Element (*sweet* like above, but targets that specific element)
 
 ##Demo
+The best way to learn HTML and CSS is by doing it. Even trying to recreate a site that exists already can be a great learning exercise.
+
 I'm copying and pasting a bunch of raw text data from the [Mr. Robot season finale discussion thread (spoilers, don't click if you haven't seen it)](https://www.reddit.com/r/MrRobot/comments/3jfpuu/mr_robot_s1e10_eps110_zer0dayavi_official/) on Reddit (a prime example of a very popular site with absolutely awful design), and together we're going to go through changing raw text into HTML and CSS.
 
 No spoilers below.
@@ -135,4 +184,16 @@ load more comments (5 replies)
 buffer
 [–]zcrates66Angela 183 points 6 months ago 
 "I don't know who you think you are talking to, but I'll try the Pradas next" hahah
+```
+
+Cool. Let's make it look like it does on Reddit (see comment).
+
+Finished code will be pasted here after class.
+
+reddit.html:
+```
+```
+
+reddit.css:
+```
 ```
