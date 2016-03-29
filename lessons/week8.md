@@ -72,6 +72,22 @@ Browsers can handle HTML, CSS, and JS - that's their purpose. So if you have HTM
 
 Note: You do need the files to be saved with the proper extension (.html, .css, .js) 
 
+A bare HTML file:
+```
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Page title!</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+</body>
+</html>
+```
+
 ##CSS
 CSS stands for *C*ascading *S*tyle*S*heets. Stylesheets are are ordered lists of style rules to apply to elements.
 
