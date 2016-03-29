@@ -9,7 +9,7 @@ You're probably already aware that "web design" and "web development" are vastly
 
 This is a programming course, and if you'd rather focus on a functional app than one that looks pretty, that's fine. On the other hand, if you'd rather make a basic app and spend time making it look amazing, I'm perfectly happy with that as well.
 
-Either way, knowing about HTML and CSS will do nothing but make your life easier - especially if 
+Either way, knowing about HTML and CSS will do nothing but make your life easier - especially if you end up doing any kind of web application development in the future.
 
 ##HTML Basics & Document Structure
 HTML is not a programming language - it's a markup language (if you're curious or don't know, HTML stands for *H*yper*T*ext *M*arkup *L*anguage). That means that there's no functionality or control statements built into HTML itself - it's just a way to tag sections of text in different ways.
@@ -29,18 +29,32 @@ The basics:
 <!DOCTYPE html> <!-- A DOCTYPE declaration is good practice. It tells whatever is parsing this file (usually a web browser) that it contains HTML.  -->
 
 <html> <!-- The html tag is the root of the document tree. Nothing (except a DOCTYPE declaration) should come before or after it. -->
-<!-- This is a comment. Note the opening and closing tags. Comments are ignored by the browser, just like compilers and interpreters ignore comments in programming languages. -->
+<!-- This is a comment. Note the opening and closing tags. Comments are ignored by the browser,
+just like compilers and interpreters ignore comments in programming languages.
+They can span multiple lines. HTML largely ignores/collapses whitespace. -->
 
-<head> <!-- Things within the head tags do not show up on the page itself. Things like page title, stylesheet links, javascript sources, and metadata for search engines go here. -->
-  <!-- It's good practice to indent children of an element, typically with two or four spaces. It also helps to make sure all of your tags are nested properly. -->
+<head> <!-- Things within the head tags do not show up on the page itself.
+  Things like page title, stylesheet links, javascript sources, and metadata for search engines go here. -->
+
+  <!-- It's good practice to indent children of an element, typically with two or four spaces.
+  It also helps to make sure all of your tags are nested properly. -->
+
   <title>This text will show up in the browser's tab or top bar menu.</title>
-  <link rel="stylesheet" type="text/css" href="style.css"> <!-- This is an example of a tag that does not require a closing tag. It links to an external CSS file (by the content of the href attribute) and tells the document to apply those styles to the elements in this document. -->
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- This is an example of a tag that does not require a closing tag. 
+  It links to an external CSS file (by the content of the href attribute) and
+  tells the document to apply those styles to the elements in this document. -->
 </head>
 
-<body> <!-- Stuff within the body tags DO show up on your page. This is where your content goes! -->
+<body> <!-- Stuff within the body tags DO show up on your page.
+  This is where your content goes! -->
+  
   <p> <!-- p stands for paragraph. -->
-    Get your shit together, Summer. <!-- "Get your shit together, Summer." will actually show up on the page. -->
+    Get your shit together, Summer.
+    <!-- "Get your shit together, Summer." will actually show up on the page. -->
   </p>
+  
 </body>
 
 </html>
@@ -56,8 +70,27 @@ Like there are many elements, there are many different types of attributes. Java
 ##Web Development Without WiFi
 Browsers can handle HTML, CSS, and JS - that's their purpose. So if you have HTML, CSS and JS files locally, you can view them in a web browser without having an internet connection. The way to do so varies slightly by OS, but the general idea is to either a) from Chrome, go to File -> Open and find the HTML file on your computer, or b) from your computer's filesystem, choose to open the file with Chrome.
 
+Note: You do need the files to be saved with the proper extension (.html, .css, .js) 
+
 ##CSS
-CSS stands for *C*ascading *S*tyle*S*heets. 
+CSS stands for *C*ascading *S*tyle*S*heets. Stylesheets are are ordered lists of style rules to apply to elements.
+
+A style rule looks like this:
+```
+// single-line comment
+p {
+  color: #000;
+}
+```
+`p` is the HTML element we want to target. In CSS, we call it the "selector", because it's possible that more than one element is contained (see below). 
+
+###Helpful Links
+
+  * [MDN CSS Selectors Reference](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors)
+  * [ColourLovers for premade color palettes](http://www.colourlovers.com/palettes)
+
+###divs and spans
+`<div>` and `<span>` are two important HTML elements.
 
 ##Chrome Developer Tools Demo - view ALL the source code
 Several options:
