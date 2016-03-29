@@ -84,19 +84,25 @@ p {
 ```
 `p` is the HTML element we want to target. In CSS, we call it the "selector", because it's possible that more than one element is contained (see below). 
 
+`color` is the property of the selected elements that we want to alter 
+
 ###Helpful Links
 
   * [MDN CSS Selectors Reference](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors)
   * [ColourLovers for premade color palettes](http://www.colourlovers.com/palettes)
 
 ###divs and spans
-`<div>` and `<span>` are two important HTML elements.
+`<div>` and `<span>` are two important HTML elements. The main difference between them is that divs are **block-level** and spans are **inline** elements. Block-level elements by default take up their own line on the page, and you can assign them a width and height. Inline elements do not break the text flow of the HTML page, and adjust their width and height to their content.
+
+(StackOverFlow is better than me at explaining this.)[http://stackoverflow.com/questions/8969381/what-is-the-difference-between-display-inline-and-display-inline-block]
 
 ##Chrome Developer Tools Demo - view ALL the source code
+Check out [this ecommerce page](http://www.maydesigns.com/shop/photobooks/build/all-layouts/#/).
+
 Several options:
 1) View -> Developer -> View Source (not as good)
 2) View -> Developer -> Developer Tools (*sweet)
-3) Right click on any element on the page -> Inspect Element (*sweet* like above, targets a specific element
+3) Right click on any element on the page -> Inspect Element (*sweet* like above, but targets that specific element)
 
 ##Demo
 I'm copying and pasting a bunch of raw text data from the [Mr. Robot season finale discussion thread (spoilers, don't click if you haven't seen it)](https://www.reddit.com/r/MrRobot/comments/3jfpuu/mr_robot_s1e10_eps110_zer0dayavi_official/) on Reddit (a prime example of a very popular site with absolutely awful design), and together we're going to go through changing raw text into HTML and CSS.
