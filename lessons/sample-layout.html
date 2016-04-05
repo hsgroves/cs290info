@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CS 290 Blog App</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar">
+    <div class="notifications">
+      <span class="notice"><%= notice %></span>
+      <span class="alert"><%= alert %></span>
+    </div>
+    <ul class="login-links">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+        </li>
+      <% else %>
+        <li>
+          <%= link_to('Login', new_user_session_path)  %>  
+        </li>
+      <% end %>
+    </ul>
+    <div class="clear"></div>
+  </div>
+
+
+  <div class="title">
+    CS 290 Blog App
+  </div>
+  <div class="container">
+    <div class="menu">
+      <ul class="nav-links">
+         <li><a href="link">Link</a></li>
+         <li><a href="link2">Link2</a></li>
+         <li><a href="link3">Link3</a></li>
+         <li><a href="link4">Link4</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <%= yield %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+</body>
+</html>
