@@ -37,8 +37,6 @@ To accomplish this, we need a few different things:
   4. We need a view for the controller to return that will display the posts for the given tag. It would probably be best for that page to also display the name of the tag that was clicked, too.
   5. Our original list of `Tags` should only include tags that are associated with more than five posts. If we hard-coded in a list of tags to click on, we would need to come back and update it every time a new post was made, or whenever an old post's tags were edited, which doesn't sound like fun. What if we forgot? It's best to automatically generate this list from the data in our database.
 
-So let's get to it!
-
 It seems like this is a great job for the sidebar on our site. But which controller handles this? It should appear on every page, and the HTML code for the sidebar lives in `app/views/layouts/application.html.erb`, not in one of the model-specific view folders! Rails apps have an application controller (`app/controllers/application_controller.rb`) that is executed on every request, before the request-specific controller method. When you want to do something site-wide like set up some variables to be used in a shared layout, there's a good chance it should go in `ApplicationController` as a `before_action`, so that it gets executed *before* other controller actions.
 
 In `app/controllers/application_controller.rb`, after line __:
