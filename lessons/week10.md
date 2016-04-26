@@ -40,7 +40,7 @@ To accomplish this, we need a few different things:
 
 It seems like this is a great job for the sidebar on our site. But which controller handles this? It should appear on every page, and the HTML code for the sidebar lives in `app/views/layouts/application.html.erb`, not in one of the model-specific view folders! Rails apps have an application controller (`app/controllers/application_controller.rb`) that is executed on every request, before the request-specific controller method. When you want to do something site-wide like set up some variables to be used in a shared layout, there's a good chance it should go in `ApplicationController` as a `before_action`, so that it gets executed *before* other controller actions.
 
-In `app/controllers/application_controller.rb`, after line __:
+In `app/controllers/application_controller.rb`, after line 4:
 ```
 before_action :initialize_popular_tags
 
@@ -49,7 +49,7 @@ def initialize_popular_tags
 end
 ```
 
-In `app/views/layouts/application_.html.erb`, replace the entire `<ul></ul>` tag and all its content on lines __-__ with:
+In `app/views/layouts/application_.html.erb`, replace the entire `<ul></ul>` tag and all its content on lines 35-40 with:
 ```
       <% unless @popular_tags.empty? %>
         <ul class="nav-links">
@@ -66,7 +66,7 @@ Let's start to fix that by creating a new controller method to get all of the po
 
 In order to get that information, we'll require that the URL include the ID of the tag object that we're looking for. To accomplish this, we're going to add a new route to our `config/routes.rb` file that maps from a URL to the controller action we're going to create.
 
-In `config/routes.rb` on line __:
+In `config/routes.rb` on line 6:
 ```
   get '/tags/:id/posts', to: 'posts#by_tag', as: 'posts_by_tag'
 ```
@@ -75,7 +75,7 @@ In `config/routes.rb` on line __:
 
 Now, if we tried to go to `class-demo-hsgroves.c9users.io/tags/1/posts`, we'd get an error, because we haven't created a `by_tag` method in our `PostsController` yet. Let's do that now:
 
-In `app/controllers/posts_controller.rb`, after line __:
+In `app/controllers/posts_controller.rb`, after line 82:
 ```
   # GET /tag/:id/posts - this comment helps you to remember which URL will map to this method
   def by_tag
@@ -112,7 +112,7 @@ Let's test this out by viewing it: `class-demo-hsgroves.c9users.io/tags/1/posts`
 
 Sweet. But oh - clicking the links in the sidebar doesn't quite work... it still links to google.com! Now that we have a new, working page to link to, let's go back and fix that.
 
-In `app/views/layouts/application_.html.erb`, on line __, replace `'http://www.google.com'` with `posts_by_tag_path(id: tag.id)` (note that that's a function call, and no longer a string!). The full line should look like this:
+In `app/views/layouts/application_.html.erb`, on line38, replace `'http://www.google.com'` with `posts_by_tag_path(id: tag.id)` (note that that's a function call, and no longer a string!). The full line should look like this:
 ```
             <li><%= link_to tag.title, posts_by_tag_path(id: tag.id)  %></li>
 ```
