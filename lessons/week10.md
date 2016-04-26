@@ -32,10 +32,11 @@ There are some more methods that exist to help you work with models ([read the d
 ###Posts by Popular Tags
 To accomplish this, we need a few different things:
   1. Before we get started, we need to know which page(s) we want this clickable list of tags to appear on, and figure out which controller manages that page.
-  2. When a user clicks on a tag, we need to pass the tag that the user clicked on to a new method in a controller that can handle that tag input accordingly.
-  3. That controller method needs to get all of the posts associated with the given tag.
-  4. We need a view for the controller to return that will display the posts for the given tag. It would probably be best for that page to also display the name of the tag that was clicked, too.
-  5. Our original list of `Tags` should only include tags that are associated with more than five posts. If we hard-coded in a list of tags to click on, we would need to come back and update it every time a new post was made, or whenever an old post's tags were edited, which doesn't sound like fun. What if we forgot? It's best to automatically generate this list from the data in our database.
+  2. That controller needs to get a list of tags, which the corresponding view should display in a list.
+  3. When a user clicks on a tag, we need to pass the tag that the user clicked on to a new method in a controller that can handle that tag input accordingly.
+  4. That controller method needs to get all of the posts associated with the given tag.
+  5. We need a view for the controller to return that will display the posts for the given tag. It would probably be best for that page to also display the name of the tag that was clicked, too.
+  6. Our goal is for the original list of `Tags` to only include tags that are associated with more than five posts. If we hard-coded in a list of tags to click on, we would need to come back and update it every time a new post was made, or whenever an old post's tags were edited, which doesn't sound like fun. What if we forgot? It's best to automatically generate this list from the data in our database.
 
 It seems like this is a great job for the sidebar on our site. But which controller handles this? It should appear on every page, and the HTML code for the sidebar lives in `app/views/layouts/application.html.erb`, not in one of the model-specific view folders! Rails apps have an application controller (`app/controllers/application_controller.rb`) that is executed on every request, before the request-specific controller method. When you want to do something site-wide like set up some variables to be used in a shared layout, there's a good chance it should go in `ApplicationController` as a `before_action`, so that it gets executed *before* other controller actions.
 
@@ -48,6 +49,74 @@ def initialize_popular_tags
 end
 ```
 
-In `app/views/layouts/application_.html.erb`, after line __:
+In `app/views/layouts/application_.html.erb`, replace the entire `<ul></ul>` tag and all its content on lines __-__ with:
+```
+      <% unless @popular_tags.empty? %>
+        <ul class="nav-links">
+          <% @popular_tags.each do |tag| %>
+            <li><%= link_to tag.title, 'http://www.google.com'  %></li>
+          <% end %>
+        </ul>
+      <% end %>
+```
 
- # Tag.joins(:taggings).select('tags.*, count(tag_id) as "tag_count"').group(:tag_id).order(' tag_count desc')
+Wait - why did we link to google.com? Well, we haven't written the controller method that should get executed when you click on the tag link, yet - so we don't know the path in our Rails application that it should link to. Linking to a different website (or page) that *does* exist is a good way to test that the links are appearing correctly with the proper tag titles.
+
+Let's start to fix that by creating a new controller method to get all of the posts for a given tag. First, we need to decide which controller this method belongs in. Since the records that we're retrieving from the database and returning to the view are instances of the `Post` model, we're going to make this a method in our `PostsController`. But we need to know which instance of the `Tag` model that we're working with in order to get all its posts, so we do need some information about that `Tag` object.
+
+In order to get that information, we'll require that the URL include the ID of the tag object that we're looking for. To accomplish this, we're going to add a new route to our `config/routes.rb` file that maps from a URL to the controller action we're going to create.
+
+In `config/routes.rb` on line __:
+```
+  get '/tags/:id/posts', to: 'posts#by_tag', as: 'posts_by_tag'
+```
+
+`get` means that this route will only apply for HTTP requests with the `GET` method. `'/tags/:id/posts` is the URI pattern that we'd like this mapping to apply for; `:id` means that we're expecting a parameter, which we're naming `:id` (just like when you name a parameter to a function that you're writing).`'posts#by_tag'` tells Rails to look in the `posts` controller for a method called `by_tag` to execute for requests that match that pattern. `as: 'posts_by_tag'` gives us a helper method for this URL (more on that later).
+
+Now, if we tried to go to `class-demo-hsgroves.c9users.io/tags/1/posts`, we'd get an error, because we haven't created a `by_tag` method in our `PostsController` yet. Let's do that now:
+
+In `app/controllers/posts_controller.rb`, after line __:
+```
+  # GET /tag/:id/posts - this comment helps you to remember which URL will map to this method
+  def by_tag
+    @tag = Tag.find(params[:id]) # remember, find will raise an error if the record is not found
+    @posts = @tag.posts # get a list of all that tag's posts
+  end
+```
+
+Now that we've got a controller action, we need a corresponding view.
+
+In a **new file** called `app/views/posts/by_tag.html.erb`:
+```
+<h1>Posts tagged "<%= @tag.title%>"</h1>
+
+<% if @posts.empty? %>
+  <p>No posts found.</p>
+<% else %>
+  <% @posts.each do |post| %>
+    <p>
+      <h3><%= post.title %> by <%= post.user.email %></h3>    
+      <p><%= post.body %></p>
+      <strong>Tags</strong>
+      <ul>
+        <% post.tags.each do |tag| %>
+          <li><%= tag.title %></li>
+        <% end %>
+      </ul>
+    </p>
+  <% end %>
+<% end %>
+```
+
+Let's test this out by viewing it: `class-demo-hsgroves.c9users.io/tags/1/posts`
+
+Sweet. But oh - clicking the links in the sidebar doesn't quite work... it still links to google.com! Now that we have a new, working page to link to, let's go back and fix that.
+
+In `app/views/layouts/application_.html.erb`, on line __, replace `'http://www.google.com'` with `posts_by_tag_path(id: tag.id)` (note that that's a function call, and no longer a string!). The full line should look like this:
+```
+            <li><%= link_to tag.title, posts_by_tag_path(id: tag.id)  %></li>
+```
+
+Remember that when we added our new entry to the `config/routes.rb` file, we specified `as: posts_by_tag`. Since we did that, Rails creates a new helper function called `posts_by_tag_path` that we can pass the named parameters that the route requires.
+
+This is great! Next week, we'll change the list of tags on the side to only show popular tags (those related to more than five posts).
